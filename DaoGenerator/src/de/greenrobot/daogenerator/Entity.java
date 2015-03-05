@@ -50,6 +50,7 @@ public class Entity {
     private final List<String> interfacesToImplement;
     private final List<ContentProvider> contentProviders;
 
+    private String classAnnotations;
     private String tableName;
     private String classNameDao;
     private String classNameTest;
@@ -252,6 +253,14 @@ public class Entity {
 
     public Schema getSchema() {
         return schema;
+    }
+
+    public String getClassAnnotations() {
+        return classAnnotations;
+    }
+
+    public void setClassAnnotations(String classAnnotations) {
+        this.classAnnotations = classAnnotations;
     }
 
     public String getTableName() {

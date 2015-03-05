@@ -30,6 +30,9 @@ public class ToMany {
     private final Property[] targetProperties;
     private final PropertyOrderList propertyOrderList;
 
+    private String jsonName;
+    private boolean isJsonParsable;
+
     public ToMany(Schema schema, Entity sourceEntity, Property[] sourceProperties, Entity targetEntity,
             Property[] targetProperties) {
         this.schema = schema;
@@ -38,6 +41,16 @@ public class ToMany {
         this.sourceProperties = sourceProperties;
         this.targetProperties = targetProperties;
         propertyOrderList = new PropertyOrderList();
+    }
+
+    public void addJsonParsing() {
+        setJsonParsable(true);
+        setJsonName(null);
+    }
+
+    public void addJsonParsing(String jsonName) {
+        setJsonParsable(true);
+        setJsonName(jsonName);
     }
 
     public Entity getSourceEntity() {
@@ -70,6 +83,22 @@ public class ToMany {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getJsonName() {
+        return jsonName;
+    }
+
+    public void setJsonName(String jsonName) {
+        this.jsonName = jsonName;
+    }
+
+    public boolean isJsonParsable() {
+        return isJsonParsable;
+    }
+
+    public void setJsonParsable(boolean isJsonParsing) {
+        this.isJsonParsable = isJsonParsing;
     }
 
     /** Property of target entity used for ascending order. */
