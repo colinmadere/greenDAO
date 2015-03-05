@@ -28,10 +28,12 @@ import java.util.Map;
  * @see <a href="http://greendao-orm.com/documentation/modelling-entities/">Modelling Entities (Documentation page)</a>
  */
 public class Schema {
+
     private final int version;
     private final String defaultJavaPackage;
     private String defaultJavaPackageDao;
     private String defaultJavaPackageTest;
+    private String jsonPropertyAnnotation;
     private final List<Entity> entities;
     private Map<PropertyType, String> propertyToDbType;
     private Map<PropertyType, String> propertyToJavaTypeNotNull;
@@ -154,6 +156,14 @@ public class Schema {
 
     public void setDefaultJavaPackageTest(String defaultJavaPackageTest) {
         this.defaultJavaPackageTest = defaultJavaPackageTest;
+    }
+
+    public String getJsonPropertyAnnotation() {
+        return jsonPropertyAnnotation;
+    }
+
+    public void setJsonPropertyAnnotation(String jsonPropertyAnnotation) {
+        this.jsonPropertyAnnotation = jsonPropertyAnnotation;
     }
 
     public List<Entity> getEntities() {

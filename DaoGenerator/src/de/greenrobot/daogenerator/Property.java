@@ -107,6 +107,17 @@ public class Property {
             return this;
         }
 
+        public PropertyBuilder addJsonParsing() {
+            this.addJsonParsing(null);
+            return this;
+        }
+
+        public PropertyBuilder addJsonParsing(String jsonName) {
+            property.isJsonParsable = true;
+            property.jsonName = jsonName;
+            return this;
+        }
+
         public Property getProperty() {
             return property;
         }
@@ -118,6 +129,7 @@ public class Property {
     private final String propertyName;
 
     private String annotations;
+    private String jsonName;
     private String columnName;
     private String columnType;
 
@@ -125,6 +137,7 @@ public class Property {
     private boolean pkAsc;
     private boolean pkDesc;
     private boolean pkAutoincrement;
+    private boolean isJsonParsable;
 
     private boolean unique;
     private boolean notNull;
@@ -159,6 +172,10 @@ public class Property {
         return annotations;
     }
 
+    public String getJsonName() {
+        return jsonName;
+    }
+
     public String getColumnName() {
         return columnName;
     }
@@ -185,6 +202,10 @@ public class Property {
 
     public boolean isNotNull() {
         return notNull;
+    }
+
+    public boolean isJsonParsable() {
+        return isJsonParsable;
     }
 
     public String getJavaType() {

@@ -28,6 +28,9 @@ public class ToOne {
     private String name;
     private final boolean useFkProperty;
 
+    private String jsonName;
+    private boolean isJsonParsable;
+
     public ToOne(Schema schema, Entity sourceEntity, Entity targetEntity, Property[] fkProperties, boolean useFkProperty) {
         this.schema = schema;
         this.sourceEntity = sourceEntity;
@@ -36,6 +39,16 @@ public class ToOne {
         this.useFkProperty = useFkProperty;
         resolvedKeyJavaType = new String[fkProperties.length];
         resolvedKeyUseEquals = new boolean[fkProperties.length];
+    }
+
+    public void addJsonParsing() {
+        setJsonParsable(true);
+        setJsonName(null);
+    }
+
+    public void addJsonParsing(String jsonName) {
+        setJsonParsable(true);
+        setJsonName(jsonName);
     }
 
     public Entity getSourceEntity() {
@@ -68,6 +81,22 @@ public class ToOne {
      */
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getJsonName() {
+        return jsonName;
+    }
+
+    public void setJsonName(String jsonName) {
+        this.jsonName = jsonName;
+    }
+
+    public boolean isJsonParsable() {
+        return isJsonParsable;
+    }
+
+    public void setJsonParsable(boolean isJsonParsing) {
+        this.isJsonParsable = isJsonParsing;
     }
 
     public boolean isUseFkProperty() {

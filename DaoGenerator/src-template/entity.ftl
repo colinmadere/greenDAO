@@ -57,7 +57,9 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
 <#if property.notNull && complexTypes?seq_contains(property.propertyType)>
     /** Not-null value. */
 </#if>
-<#if property.annotations?has_content>    ${property.annotations}</#if>
+
+<#if property.annotations?has_content>    ${property.annotations!}</#if>
+<#if property.jsonParsable>    ${schema.jsonPropertyAnnotation!}<#if property.jsonName?has_content>("${property.jsonName}")</#if></#if>
     private ${property.javaType} ${property.propertyName};
 </#list>
 
@@ -69,6 +71,7 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
     private transient ${entity.classNameDao} myDao;
 
 <#list entity.toOneRelations as toOne>
+<#if toOne.jsonParsable>    ${schema.jsonPropertyAnnotation}<#if toOne.jsonName?has_content>("${toOne.jsonName}")</#if></#if>
     private ${toOne.targetEntity.className} ${toOne.name};
 <#if toOne.useFkProperty>
     private ${toOne.resolvedKeyJavaType[0]} ${toOne.name}__resolvedKey;
@@ -78,6 +81,7 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
 
 </#list>
 <#list entity.toManyRelations as toMany>
+<#if toMany.jsonParsable>    ${schema.jsonPropertyAnnotation}<#if toMany.jsonName?has_content>("${toMany.jsonName}")</#if></#if>
     private List<${toMany.targetEntity.className}> ${toMany.name};
 </#list>
 
