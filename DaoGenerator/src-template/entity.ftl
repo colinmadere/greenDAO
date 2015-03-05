@@ -47,6 +47,7 @@ import ${additionalImport};
 /**
  * Entity mapped to table ${entity.tableName}.
  */
+<#if entity.classAnnotations?has_content>${entity.classAnnotations}</#if>
 public class ${entity.className}<#if
 entity.superclass?has_content> extends ${entity.superclass} </#if><#if
 entity.interfacesToImplement?has_content> implements <#list entity.interfacesToImplement
@@ -56,6 +57,7 @@ as ifc>${ifc}<#if ifc_has_next>, </#if></#list></#if> {
 <#if property.notNull && complexTypes?seq_contains(property.propertyType)>
     /** Not-null value. */
 </#if>
+<#if property.annotations?has_content>    ${property.annotations}</#if>
     private ${property.javaType} ${property.propertyName};
 </#list>
 

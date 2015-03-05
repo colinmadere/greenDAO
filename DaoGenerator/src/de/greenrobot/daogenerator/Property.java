@@ -102,6 +102,11 @@ public class Property {
             return this;
         }
 
+        public PropertyBuilder setAnnotations(String annotation) {
+            property.annotations = annotation;
+            return this;
+        }
+
         public Property getProperty() {
             return property;
         }
@@ -112,6 +117,7 @@ public class Property {
     private PropertyType propertyType;
     private final String propertyName;
 
+    private String annotations;
     private String columnName;
     private String columnType;
 
@@ -147,6 +153,10 @@ public class Property {
 
     public void setPropertyType(PropertyType propertyType) {
         this.propertyType = propertyType;
+    }
+
+    public String getAnnotations() {
+        return annotations;
     }
 
     public String getColumnName() {
