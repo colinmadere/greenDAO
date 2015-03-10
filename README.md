@@ -1,3 +1,11 @@
+TR Notes
+========
+We've forked the official greenDAO to add easy annotation adding and retention to combine the classes used for local data caching and those for parsing JSON data from our servers.
+
+To make edits we had to NOT try to make the build work with Android Studio but build entirely from the command-line:
+* `./gradlew install` (to install core version to local maven repo for doing work to DaoGenerator)
+* `cd DaoGenerator; ../gradlew install`  (to edit and install new version of DaoGenerator to local maven repo)
+
 greenDAO
 ========
 greenDAO is a light & fast ORM solution for Android that maps objects to SQLite databases. Being highly optimized for Android, greenDAO offers great performance and consumes minimal memory.
